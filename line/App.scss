@@ -1,0 +1,227 @@
+@import './vars';
+
+html,
+body,
+#root,
+#app {
+  height: 100%;
+  margin: 0;
+  font-family: $open-sans;
+  color: $merit-blue;
+  font-size: 16px;
+}
+.app-layout {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 180px auto;
+  grid-template-rows: 80px 48px auto 0;
+  grid-template-areas:
+    'top-nav top-nav'
+    'sub-nav sub-nav'
+    'left-nav main';
+}
+#top-nav {
+  grid-area: top-nav;
+}
+#sub-nav {
+  grid-area: sub-nav;
+}
+#left-nav,
+#drawer {
+  grid-area: left-nav;
+}
+main {
+  grid-area: main;
+  z-index: 0;
+  background-color: $merit-light-grey;
+}
+// This is a hack fix to overwrite some imported stylesheet
+ul {
+  margin: 0;
+  padding: 0;
+}
+select,
+textarea,
+input[type='number'],
+input[type='number'] {
+  font-family: $open-sans;
+  font-size: 16px;
+  height: 30px;
+}
+button {
+  font-family: $open-sans;
+  font-size: 16px;
+  padding: 5px;
+  border: 0;
+  outline: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+.button-gradient {
+  background: white;
+  border: 2px solid $merit-blue;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+              0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 5px 0px rgba(0,0,0,.12);
+  &:hover {
+    background: $merit-sec-btn-hover;
+  }
+}
+.merit-blue-button {
+  background: $blue-gradient;
+  border: 2px solid $merit-blue;
+  border-radius: 5px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+              0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 5px 0px rgba(0,0,0,.12);
+  color: white;
+  &:active {
+    background: $blue-gradient-reverse;
+  }
+  &:hover {
+    background: $blue-grey-gradient;
+  }
+}
+.merit-title {
+  font-family: 'rawline';
+  font-size: 30px;
+  font-weight: bold;
+}
+.merit-medium-title {
+  font-family: 'rawline';
+  font-size: 18px;
+  font-weight: bold;
+}
+.merit-subtitle {
+  font-family: 'rawline';
+  font-size: 16px;
+  font-weight: bold;
+}
+.bold-text {
+  font-weight: bold;
+}
+.merit-rawline {
+  font-family: 'rawline';
+}
+.padding {
+  padding: 5px;
+}
+.display-none {
+  display: none !important;
+}
+.disabled-looking {
+  opacity: 0.3;
+  cursor: default;
+}
+.margin-top-10 {
+  margin-top: 10px;
+}
+.space-top-5 {
+  padding-top: 5px;
+}
+.space-top-10 {
+  padding-top: 10px;
+}
+.space-top-20 {
+  padding-top: 20px;
+}
+.space-left-5 {
+  padding-left: 5px;
+}
+.space-left-10 {
+  padding-left: 10px;
+}
+.space-right-10 {
+  padding-right: 10px;
+}
+.right-aligned {
+  text-align: right;
+}
+.flipped {
+  transform: scaleY(-1);
+}
+.flip-horiz {
+  transform: scaleX(-1);
+}
+.italics {
+  font-style: italic;
+}
+.merit-red-text {
+  color: $merit-red;
+}
+.merit-link {
+  color: $merit-link-blue;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: $merit-medium-blue;
+  }
+}
+.instructions-bg {
+  background-color: $merit-blue-grey;
+}
+.info-bubble {
+  background-color: $merit-link-blue;
+  color: white;
+  border-radius: 12px;
+  font-size: 16px !important;
+  cursor: pointer;
+}
+// spinner
+$offset: 187;
+$duration: 1.4s;
+
+.spinner {
+  animation: rotator $duration linear infinite;
+  margin-left: calc(50% - 34px);
+  margin-top: 30px;
+  @keyframes rotator {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(270deg);
+    }
+  }
+
+  .path {
+    stroke-dasharray: $offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash $duration ease-in-out infinite,
+      colors ($duration * 4) ease-in-out infinite;
+  }
+
+  @keyframes colors {
+    0% {
+      stroke: #4285f4;
+    }
+    25% {
+      stroke: #de3e35;
+    }
+    50% {
+      stroke: #f7c223;
+    }
+    75% {
+      stroke: #1b9a59;
+    }
+    100% {
+      stroke: #4285f4;
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: $offset;
+    }
+    50% {
+      stroke-dashoffset: $offset/4;
+      transform: rotate(135deg);
+    }
+    100% {
+      stroke-dashoffset: $offset;
+      transform: rotate(450deg);
+    }
+  }
+}
+// End spinner
